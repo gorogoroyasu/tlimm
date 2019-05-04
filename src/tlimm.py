@@ -6,10 +6,10 @@ from writer import ImageAndAttributeWriter
 
 class Cut:
     def __init__(self,
-                 image_input_dir='/Users/gorogoroyasu/dockerWorld/competitions/signate/159/data/train_images',
-                 annotation_input_dir='/Users/gorogoroyasu/dockerWorld/competitions/signate/159/data/train_annotations',
-                 image_output_dir='./demo/imgs',
-                 annotation_output_dir='./demo/anns',
+                 image_input_dir,
+                 annotation_input_dir,
+                 image_output_dir,
+                 annotation_output_dir,
                  size=(300, 300),
                  internal=True):
         self.image_input_dir = image_input_dir
@@ -40,4 +40,9 @@ class Cut:
 
 if __name__ == "__main__":
     # size = (1000, 1000)
-    Cut()
+    Cut(
+        image_input_dir="./demo/imgs",
+        annotation_input_dir="./demo/annotations",
+        image_output_dir="./demo/output_imgs",
+        annotation_output_dir="./demo/output_annotations",
+    )

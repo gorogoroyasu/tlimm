@@ -14,7 +14,8 @@ class ImageAndAttributeReader:
             image = Image.open(i)
             yield image, boxes, labels
 
-    def parse_annotation(self, annotation):
+    @staticmethod
+    def parse_annotation(annotation):
         with open(annotation, 'r') as f:
             j = json.load(f)
         boxes = []
