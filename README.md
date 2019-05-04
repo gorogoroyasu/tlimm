@@ -34,6 +34,13 @@ tlimm.Cut(
 )
 ``` 
 
+This Library will crop the given image in two ways.
+First Crop
+![First Crop](imgs/description_1.png)
+
+Second Crop
+![Second Crop](imgs/description_2.png)
+
 # args
 ### image_input_dir
 the image you want to crop.
@@ -55,8 +62,17 @@ Cropping size.
 Should be tuple with `(height, width)`
 
 ### internal
-See `in_cur_picture` method in `process_image.py`.
-There is a nice Figure in the comment.
+See the figures shown below or `in_cur_picture` method in `process_image.py`.
+
+Red Boxes are regarded as corresponding annotation.
+If internal is settled True:
+![Internal_True](imgs/internal_true.png)
+
+If internal is settled False:
+![Internal_False](imgs/internal_false.png)
+
+
+
 
 ## CAUTION
 currently, the supported annotation type is strictly limited.
