@@ -67,7 +67,7 @@ The Annotation file has some limitations.
 It should be json, and the file name should be pair with the image name.
 Just change the extension name from jpg to json.
 the json should be like 
-```json
+```javascript
 {
   {
     "category": 1, 
@@ -75,8 +75,8 @@ the json should be like
       "x1": 1, 
       "x2": 2, 
       "y1": 1, 
-      "y2": 2,
-      },
+      "y2": 2
+    }
   }
 }
 ```
