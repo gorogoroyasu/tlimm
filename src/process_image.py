@@ -5,6 +5,31 @@ class Processor:
         self.labels = labels
         self.internal = internal
         self.cut_size = cut_size
+        self.cut_image()
+        self.cut_images = self.cut_image()
+        self.cut_bboxes, self.cut_labels = self.bboxes_and_labels()
+        self.cis, self.cbs, self.cls = self.drop_empty_pictures
+
+    @property
+    def cut_image_with_info(self):
+        for i, _ in enumerate(self.cis):
+            yield self.cis[i], self.cbs[i], self.cls[i]
+
+    def drop_empty_pictures(self):
+        # cut images
+        cis = []
+        # cut bboxes
+        cbs = []
+        # cut labels
+        cls = []
+        assert len(self.cut_labels) == len(self.cut_bboxes) == len(self.cut_images)
+        for i, b in enumerate(self.cut_labels):
+            if len(b) != 0:
+                cis.append(self.cut_images[i])
+                cbs.append(self.cut_bboxes[i])
+                cls.append(self.cut_labels[i])
+
+        return cis, cbs, cls
 
     def image_cut_rules(self):
         h, w, _ = self.image.shape
@@ -17,6 +42,10 @@ class Processor:
                 yield ch, ch + dh, cw, cw + dw
 
     def cut_image(self):
+        """
+        cut image
+        :return:
+        """
         cut_img = dict()
         for count, (ch, ch_next, cw, cw_next) in enumerate(self.image_cut_rules()):
             if count not in cut_img.keys():
@@ -27,6 +56,7 @@ class Processor:
 
     def bboxes_and_labels(self):
         """
+        cut bboxes and labels
         TODO: should be better
         :return:
         """
