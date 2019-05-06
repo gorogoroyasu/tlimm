@@ -18,9 +18,12 @@ class Processor:
     def cut_image_with_info(self):
         for i, _ in enumerate(self.cis):
             image = Image.fromarray(self.cis[i])
+            """
+            # FOR DEBUG
             for cbs in self.cbs[i]:
                 draw = ImageDraw.Draw(image)
                 draw.rectangle((cbs[0], cbs[2], cbs[1], cbs[3]), fill=False, outline=(255, 0, 0))
+            """
             yield image, self.cbs[i], self.cls[i]
 
     def drop_empty_pictures(self):

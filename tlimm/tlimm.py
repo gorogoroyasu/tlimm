@@ -1,7 +1,7 @@
 from pathlib import Path
-from process_image import Processor
-from reader import ImageAndAttributeReader
-from writer import ImageAndAttributeWriter
+from .process_image import Processor
+from .reader import ImageAndAttributeReader
+from .writer import ImageAndAttributeWriter
 
 
 class Cut:
